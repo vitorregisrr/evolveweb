@@ -1,0 +1,83 @@
+#banner {
+    position: relative;
+    @extend %dflex;
+    padding-top: 160px;
+    width: 100%;
+    height: 450px;
+    background-size: cover;
+    background-position: bottom center;
+    opacity: 1;
+    transform: scale(1);
+    @include transition(1s, all, ease-in-out);
+
+    &.non-webp {
+        background-image: url(../images/backgrounds/heroes/hero-banner.png);
+    }
+
+    &.webp {
+        background-image: url(../images/backgrounds/heroes/hero-banner.webp);
+    }
+
+    &.scrolled {
+        @media screen and (min-width: 998px) {
+            transform: matrix(1.2, 0, 0, 1.2, 0, 0);
+        }
+
+        opacity: 0;
+    }
+
+    >.container {
+        @extend %dflex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    @media screen and(min-width: 1700px) {
+        height: 550px;
+    }
+
+
+    @media screen and (max-width: $bp-sm) {
+        padding-top: 120px;
+        height: 350px;
+    }
+
+    button {
+        font-size: 16px;
+    }
+
+    .title {
+        font-weight: bold;
+        margin-bottom: 0;
+        letter-spacing: -2px;
+        text-transform: uppercase;
+        color: #fff;
+        line-height: 40px;
+        font-size: 40px;
+        text-align: center;
+        -webkit-text-shadow: -1px -2px 136px -47px rgba(214, 49, 80, 1);
+        -moz-text-shadow: -1px -2px 136px -47px rgba(214, 49, 80, 1);
+        text-shadow: -1px -2px 136px -47px rgba(214, 49, 80, 1);
+    }
+
+    .subtitle{
+        font-weight: 500;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        color: $main-color;
+        font-size: 20px;
+        text-align: center;
+        margin-bottom: 0;
+    }
+
+
+    @media screen and (max-width: 992px) {
+        font-size: 35px;
+        line-height: 50px;
+    }
+
+    @media screen and (max-width: 768px) {
+        line-height: 30px;
+        font-size: 30px;
+    }
+}

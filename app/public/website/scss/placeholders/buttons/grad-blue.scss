@@ -1,0 +1,10 @@
+.btn-grad--blue{
+    @extend %btn;
+    background-image: $grad-blue;
+    text-transform: uppercase;
+    color: #fff !important;
+
+    &:hover {
+        @include scale(1.05);
+    }
+}

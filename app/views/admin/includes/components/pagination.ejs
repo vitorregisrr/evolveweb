@@ -1,0 +1,40 @@
+<nav class="btn-group" role="group" aria-label="Paginação da lista">
+    <% if(totalPages >= 1){%>
+    <!-- exibe a primeira página se não estiver nela ou na 2 -->
+    <% if(currentPage != 1 && currentPage -1 != 1){ %>
+    <a role="button" class="keep-params btn btn-sm btn-outline-primary" href="?page=<%=1%>">
+        1
+    </a>
+    <span class="p-2"> ... </span>
+    <% } %>
+    <!-- exibe a página anterior se tiver -->
+    <% if(hasPrevious){ %>
+    <a role="button" class="keep-params btn btn-sm btn-outline-primary" href="?page=<%= currentPage-1 %>">
+        <%= currentPage-1 %>
+    </a>
+    <% } %>
+    <!-- exibe a página atual -->
+    <a role="button" class="keep-params btn btn-sm btn-outline-primary active" href="?page=<%= currentPage %>">
+        <%= currentPage %>
+    </a>
+    <!-- exibe a próxima pagian se tiver -->
+    <% if(hasNext){ %>
+    <a role="button" class="keep-params btn btn-sm btn-outline-primary" href="?page=<%= currentPage+1 %>">
+        <%= currentPage+1 %>
+    </a>
+    <% } %>
+    <!-- exibe exibe 2 páginas a frente  se exstir  e a atual for a página 1 -->
+    <% if(currentPage == 1 && totalPages > 2){ %>
+    <a role="button" class="keep-params btn btn-sm btn-outline-primary" href="?page=<%= currentPage+2 %>">
+        <%= currentPage+2 %>
+    </a>
+    <% } %>
+    <!-- exibe a página total se esta não for a atual e nem a penultima e se tiver mais de 3-->
+    <% if(totalPages != currentPage && currentPage != totalPages-1 && totalPages > 3){ %>
+    <span class="p-2"> ... </span>
+    <a role="button" class="keep-params btn btn-sm btn-outline-primary" href="?page=<%= totalPages %>">
+        <%= totalPages %>
+    </a>
+    <% } %>
+    <% } %>
+</nav>

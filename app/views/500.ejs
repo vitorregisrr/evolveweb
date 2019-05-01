@@ -1,0 +1,19 @@
+<%- include('./website/includes/head.ejs')%>
+</head>
+
+<body class="scrollbar-inner wow fadeIn">
+    <%- include('./website/includes/nav.ejs') %>
+    <main>
+        <section id="banner" class="img-webp" style="height: 80vh;">
+            <div class="container">
+                <h1 class="title ">
+                    <span class="wow fadeInDown" data-wow-delay="0.5s">Ops, ocorreu um erro!</span>
+                </h1>
+                <p class="color-white pt-3"><%= error %></p>
+            </div>
+        </section>
+    </main>
+    <%- include('./website/includes/footer.ejs')%>
+</body>
+
+</html>

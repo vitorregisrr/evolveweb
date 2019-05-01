@@ -1,0 +1,174 @@
+.view-more {
+    padding: 40px 0;
+    @extend %dflex;
+    justify-content: center;
+    align-items: center;
+}
+
+#speak-us {
+    background-repeat: no-repeat;
+    background-position: left 70%;
+    background-size: 350px;
+    min-height: 100vh;
+    padding-top: 80px;
+    @extend %dflex;
+    justify-content: center;
+    align-items: center;
+
+    &.non-webp {
+        background-image: url(../images/backgrounds/bg-dots.png);
+    }
+
+    &.webp {
+        background-image: url(../images/backgrounds/bg-dots.webp);
+    }
+
+    .speak-us__content {
+        position: relative;
+        background-color: $main-navy;
+        border-radius: 15px;
+        height: auto;
+        min-height: 80%;
+        width: 100%;
+        -webkit-box-shadow: 0 72px 164px 0 rgba(45, 54, 95, 0.05);
+        -moz-box-shadow: 0 72px 164px 0 rgba(45, 54, 95, 0.05);
+        -ms-box-shadow: 0 72px 164px 0 rgba(45, 54, 95, 0.05);
+        -o-box-shadow: 0 72px 164px 0 rgba(45, 54, 95, 0.05);
+        box-shadow: 0 72px 164px 0 rgba(45, 54, 95, 0.05);
+
+        // &::after{
+        //     content: "";
+        //     z-index: -1;
+        //     position: absolute;
+        //     right: -40px;
+        //     top: 340px;
+        //     width: 50%;
+        //     height: 50%;
+        //     border-radius: 15px;
+        //     background-color: $main-color;
+        // }
+
+
+        &__container {
+            padding: 60px 100px;
+
+            @media screen and (max-width: $bp-md) {
+                padding: 40px 35px;
+            }
+        }
+
+        &__form {
+            .title {
+                color: #fff;
+                font-weight: 400;
+                font-size: 16px;
+                letter-spacing: 0px;
+                text-transform: uppercase;
+                margin-bottom: 20px;
+            }
+        }
+
+        &__contact {
+            .title {
+                font-weight: bold;
+                color: #fff;
+                letter-spacing: -1px;
+                font-size: 35px;
+                text-transform: uppercase;
+            }
+
+            .sub-title {
+                font-weight: 200;
+                color: #fff;
+                letter-spacing: 0px;
+                font-size: 15px;
+                text-transform: lowercase;
+            }
+
+            a:hover {
+                text-decoration: none;
+            }
+
+            .contact-item {
+                position: relative;
+                background: $grad-blue;
+                border-radius: 15px;
+                width: 100%;
+                overflow: hidden;
+                height: auto;
+                margin: 35px 0;
+                padding: 20px 10px 20px 20%;
+                @include transition(1s, all, ease);
+                word-wrap: break-word;
+
+                &:hover {
+                    -webkit-transform: scale(1.05);
+                    -moz-transform: scale(1.05);
+                    -ms-transform: scale(1.05);
+                    -o-transform: scale(1.05);
+                    transform: scale(1.05);
+
+                    i.fa {
+                        -webkit-transform: rotate(360deg);
+                        -moz-transform: rotate(360deg);
+                        -ms-transform: rotate(360deg);
+                        -o-transform: rotate(360deg);
+                        transform: rotate(360deg);
+                    }
+                }
+
+                i.fa {
+                    position: absolute;
+                    left: -2%;
+                    top: 3%;
+                    font-size: 70px;
+                    color: #fff;
+                    @include transition(0.5s, all, ease-in-out);
+                }
+
+                i.fa-mobile-phone {
+                    font-size: 120px;
+                    left: -2%;
+                    top: -22px;
+                    -webkit-transform: rotate(90deg);
+                    -moz-transform: rotate(90deg);
+                    -ms-transform: rotate(90deg);
+                    -o-transform: rotate(90deg);
+                    transform: rotate(90deg);
+                }
+
+                .desc {
+                    font-size: 14px;
+                    color: #fff;
+                    font-weight: 100;
+                    letter-spacing: 2px;
+                    margin-bottom: 5px;
+                    text-transform: uppercase;
+                }
+
+                .value {
+                    margin: 0;
+                    font-size: 21px;
+                    font-weight: bold;
+                    letter-spacing: 1px;
+                    text-transform: lowercase;
+                    color: #fff;
+                }
+
+                @media screen and (max-width: 470px) {
+                    i.fa {
+                        left: -13%;
+                    }
+
+                    i.fa-mobile-phone {
+                        left: -13%;
+                    }
+
+                    .value {
+                        font-size: 18px;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,38 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    font-weight: normal;
+    font-size: 14px;
+    min-height: 100vh;
+    background-color: #f3f4f8;
+    overflow-x: hidden ;
+}
+
+
+@import 
+'reset',
+'colors',
+'trumps',
+'placeholders/dflex',
+'animations/pulse',
+'mixins/transition',
+'mixins/breakpoints',
+'placeholders/buttons/default',
+'placeholders/buttons/main',
+'placeholders/buttons/grad-red',
+'placeholders/buttons/grad-blue',
+'sections/home',
+'sections/banner',
+'sections/projeto',
+'sections/testimonials',
+'sections/whoare',
+'sections/technologies',
+'sections/speak-us',
+'sections/someworks',
+'sections/about',
+'components/footer.scss',
+'components/main-nav',
+'components/form',
+'components/work',
+'components/list',
+'components/button-group',
+'typo';

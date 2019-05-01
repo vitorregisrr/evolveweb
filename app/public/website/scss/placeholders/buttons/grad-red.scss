@@ -1,0 +1,10 @@
+.btn-grad--red {
+    @extend %btn;
+    background-image: $grad-red;
+    text-transform: uppercase;
+    color: #fff !important;
+
+    &:hover {
+        @include scale(1.02);
+    }
+}

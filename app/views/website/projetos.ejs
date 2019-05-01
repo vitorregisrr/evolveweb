@@ -1,0 +1,64 @@
+<%- include('includes/head.ejs')%>
+</head>
+
+<body class="scrollbar-inner wow fadeIn">
+    <%- include('includes/nav.ejs')%>
+    <main>
+        <section id="banner" class="img-webp">
+            <div class="container">
+                <h1 class="title">
+                    <span class="wow fadeInDown" data-wow-delay="0.5s">Nossos Projetos</span>
+                </h1>
+                <h2 class="subtitle wow fadeInDown" data-wow-delay="0.5s">O que andamos desenvolvendo</h2>
+            </div>
+        </section>
+
+        <div class="container">
+            <div class="row pb-4">
+                <div class="col-12 d-flex justify-content-center align-items-center">
+                    <nav class="button-group--grad">
+                        <button class="button-group--grad__button active">Todos</button>
+                        <button class="button-group--grad__button">Websites</button>
+                        <button class="button-group--grad__button">Aplicativos</button>
+                        <button class="button-group--grad__button">Sistemas</button>
+                        <button class="button-group--grad__button">Jogos</button>
+                    </nav>
+                </div>
+            </div>
+
+            <div class="row pt-3">
+
+            </div>
+        </div>
+        <div class="row p-4">
+            <% projs.forEach( proj => { %>
+                <div class="col-12 mb-4">
+                    <div class="work-card  wow fadeInUp">
+                        <div class="work-card__img">
+                            <img data-src="<%= proj.image.secure_url %>" src="/website/images/trumps/loading.gif" class="lazy"
+                                alt="<%= proj.titulo %>">
+                        </div>
+                        <div class="work-card__content">
+                            <h4 class="work-card__title"><%= proj.titulo %></h4>
+                            <p class="work-card__desc"><%= proj.descricao %> </p>
+                            <div class="work-card__link">
+                                <a href="/projeto:<%= proj.codigo %>" role="button" class="btn-grad--red">
+                                    Ver Mais
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <% }); %>
+            <div class="col-12 d-flex justify-content-center align-items-center">
+                <button class="btn-grad--red wow fadeInUp">
+                    <i class="fa fa-plus"></i>
+                </button>
+            </div>
+        </div>
+
+    </main>
+    <%- include('includes/footer.ejs')%>
+</body>
+
+</html>

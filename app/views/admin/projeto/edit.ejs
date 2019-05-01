@@ -1,0 +1,156 @@
+<%- include('../includes/head') %></head>
+
+<body>
+  <div class="container-scroller">
+
+    <%- include('../includes/navbar') %>
+
+    <div class="container-fluid page-body-wrapper">
+
+      <%- include('../includes/sidebar') %>
+
+      <div class="main-panel">
+        <div class="content-wrapper wow fadeIn">
+          <div class="page-header">
+            <h3 class="page-title"><span class="page-title-icon bg-gradient-primary text-white mr-2"><i
+                  class="mdi mdi-plus"></i></span>Editar projeto </h3>
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">Projetos</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Editar projeto</li>
+              </ol>
+            </nav>
+          </div>
+          <div class="row">
+            <div class="col-12 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <%- include('../includes/forms/error') %>
+                  <form class="forms-sample" action="/admin/projetos/edit" method="POST" enctype="multipart/form-data">
+                    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                    <input type="hidden" name="id" value="<%= projeto.id %>">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="inputTitulo">Título</label>
+                          <input type="text" name="titulo" class="form-control" id="inputTitulo"
+                            placeholder="Digite o titulo" value="<%= projeto.titulo %>">
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="inputLink">Link do projeto</label>
+                          <input type="text" name="link" class="form-control" id="inputLink" placeholder="Digite o link"
+                            value="<%= projeto.link %>">
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="inputAno">Ano</label>
+                          <input type="text" name="ano" class="form-control" id="inputAno" placeholder="Digite o ano"
+                            value="<%= projeto.ano %>">
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="inputCliente">Cliente</label>
+                          <select type="text" name="cliente" class="select-picker--cliente form-control"
+                            title="Selecionar cliente" id="inputCliente" placeholder="Digite o cliente">
+                            <% if( projeto.cliente) { %>
+                            <option selected value="<%= projeto.cliente.id %>"> <%= projeto.cliente.nome %>
+                            </option>
+                            <% } %>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-md-12">
+                        <div class="form-group">
+                          <label for="inputDescricao">Descrição</label>
+                          <textarea rows="4" name="descricao" class="form-control" id="inputDescricao"
+                            placeholder="Digite o descricao"><%= projeto.descricao %></textarea>
+                        </div>
+                      </div>
+                      <div class="col-md-12">
+                        <div class="form-group"><label>Imagem principal</label>
+                          <div class="input-group col-xs-12">
+                            <% if(projeto.image){ %>
+                            <img src="<%= projeto.image.secure_url %>" alt="" class="img-preview">
+                            <% } %>
+                            <input type="file" name="image" class="file-upload-default">
+                            <input type="text" class="form-control file-upload-info" placeholder="Selecionar imagem">
+                            <span class="input-group-append">
+                              <button class="file-upload-browse btn btn-gradient-primary" type="button">Selecionar
+                                imagem</button></span>
+                          </div>
+                        </div>
+                        <div class="col-12">
+                          <div class="upload_media">
+                            <h4>Adicionar Outras Fotos</h4>
+                            <div class="row">
+                              <table class="table" border="0" cellpadding="0" cellspacing="0">
+                                <thead>
+                                  <tr>
+                                    <td>Imagens</td>
+                                    <td>Ações</td>
+                                  </tr>
+                                </thead>
+                                <tbody id="imagesTable">
+                                  <% for(image of projeto.images) {%>
+                                  <tr>
+                                    <td>
+                                      <div class="property-text">
+                                        <img src="<%= image.secure_url %>"
+                                          style="height: 100px; width: 100px; object-fit: cover">
+                                      </div>
+                                    </td>
+                                    <td>
+                                      <span><button type="button" data-image="<%= image.public_id %>"
+                                          onclick="removeImage(this)" class="btn btn-sm btn-gradient-primary"><i
+                                            class="fa fa-times" aria-hidden="true"></i>
+                                          Remover</button></span>
+                                    </td>
+                                  </tr>
+                                  <% } %>
+                                </tbody>
+                              </table>
+                              <button type="button" class="btn btn-sm btn-gradient-primary m-3" id="novaFoto"
+                                data-toggle="modal" data-target="#novaFotoModal"><i class="mdi mdi-plus"></i>
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-12 mb-3">
+                        <div class="row">
+                          <div class="col-4">
+                            <div class="form-check form-check-flat form-check-primary">
+                              <label class="form-check-label">
+                                <input type="checkbox" class="form-check-input" name="destaque" <%= projeto.destaque ? 'checked' : '' %>>
+                                Destaque
+                                <i class="input-helper"></i></label></div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="float-right">
+                        <button type="submit" class="btn btn-gradient-primary mr-2">Salvar</button>
+                        <a role="button" href="/admin/projetos" class="btn btn-light">Cancelar</a></div>
+                    </div>
+                </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- content-wrapper ends -->
+        <%- include('../includes/footer') %>
+        <%- include('../includes/modals/addImage') %>
+      </div>
+      <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+  </div>
+  <!-- container-scroller -->
+  <%- include('../includes/plugins') %>
+</body>
+
+</html>

@@ -1,0 +1,60 @@
+<%- include('../includes/head') %>
+</head>
+
+<body>
+  <div class="container-scroller">
+    <div class="container-fluid page-body-wrapper full-page-wrapper">
+      <div class="content-wrapper d-flex align-items-center auth">
+        <div class="row w-100">
+          <div class="col-lg-4 mx-auto">
+            <div class="auth-form-light text-left p-5">
+              <div class="brand-logo">
+                <img src="/website/images/logo.png">
+              </div>
+              <h4>Ei, esse é um espaço admnistrativo!</h4>
+              <h6 class="font-weight-light">Faça login para prosseguir:</h6>
+              <form class="pt-3" method="POST" action="/admin/login">
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                <div class="form-group">
+                  <%- include('../includes/forms/error') %> </div>
+                <div class="form-group">
+                  <input type="text" class="form-control form-control-lg" name="user" id="user" placeholder="Usuário"  value="<%= form ? form.values.user: '' %>">
+                </div>
+                <div class="form-group">
+                  <input type="password" class="form-control form-control-lg" name="password" id="password" placeholder="Senha" value="<%= form ? form.values.password: '' %>">
+                </div>
+                <div class="my-2 d-flex justify-content-between align-items-center">
+                  <div class="form-check">
+                    <label class="form-check-label text-muted">
+                      <input type="checkbox" name="keep" class="form-check-input">
+                      Me mantenha logado
+                    </label>
+                  </div>
+                  <a href="#" class="auth-link text-black">Esqueceu sua senha?</a>
+                </div>
+                <div class="mt-3">
+                  <button type="submit"
+                    class="btn btn-block btn-gradient-primary btn-lg font-weight-medium auth-form-btn text-uppercase">Entrar</button>
+                </div>
+                <%# <div class="mb-2">
+                  <button type="button" class="btn btn-block btn-facebook auth-form-btn">
+                    <i class="mdi mdi-facebook mr-2"></i>Conectar com Facebook
+                  </button>
+                </div> %>
+                <%# <div class="text-center mt-4 font-weight-light">
+                  Não é registrado? <a href="/blog" class="text-primary">Crie uma conta</a> %>
+            </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- content-wrapper ends -->
+  </div>
+  <!-- page-body-wrapper ends -->
+  </div>
+  <!-- container-scroller -->
+  <%- include('../includes/plugins') %>
+</body>
+
+</html>

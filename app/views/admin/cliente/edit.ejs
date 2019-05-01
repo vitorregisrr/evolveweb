@@ -1,0 +1,97 @@
+<%- include('../includes/head') %></head>
+
+<body>
+  <div class="container-scroller">
+
+    <%- include('../includes/navbar') %>
+
+    <div class="container-fluid page-body-wrapper">
+
+      <%- include('../includes/sidebar') %>
+
+      <div class="main-panel">
+        <div class="content-wrapper wow fadeIn">
+          <div class="page-header">
+            <h3 class="page-title"><span class="page-title-icon bg-gradient-primary text-white mr-2"><i
+                  class="mdi mdi-plus"></i></span>Editar cliente </h3>
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">Clientes</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Editar cliente</li>
+              </ol>
+            </nav>
+          </div>
+          <div class="row">
+            <div class="col-12 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <%- include('../includes/forms/error') %>
+                  <form class="forms-sample" action="/admin/clientes/edit" method="POST" enctype="multipart/form-data">
+                    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                    <input type="hidden" name="id" value="<%= cliente.id %>">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group has">
+                          <label for="inputNome">Nome</label>
+                          <input type="text" name="nome" class="form-control has" id="inputNome"
+                            placeholder="Digite o nome" value="<%= cliente.nome %>">
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group has">
+                          <label for="inputEmail">Email</label>
+                          <input type="text" name="email" class="form-control has" id="inputEmail"
+                            placeholder="Digite o email" value="<%= cliente.email %>">
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group has">
+                          <label for="inputEncarregado">Encarregado</label>
+                          <input type="text" name="encarregado" class="form-control has" id="inputEncarregado"
+                            placeholder="Digite o encarregado" value="<%= cliente.encarregado %>">
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="inputTelefones">Telefones</label>
+                          <input type="hidden" id="inputTelefones" name="telefones"
+                            value="<%= JSON.stringify( { data : cliente.telefones.length > 0 ? cliente.telefones : [] }) %>">
+                          <div class="input-tags form-control" data-datastore="input[name='telefones']">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-12">
+                        <div class="form-group"><label>Imagem (logo da empresa)</label>
+                          <div class="input-group col-xs-12">
+                            <% if(cliente.image){ %>
+                              <img src="<%= cliente.image.secure_url %>" alt="" class="img-preview">
+                            <% } %>
+                            <input type="file" name="image" class="file-upload-default">
+                            <input type="text" class="form-control file-upload-info" placeholder="Selecionar imagem">
+                            <span class="input-group-append">
+                              <button class="file-upload-browse btn btn-gradient-primary" type="button">Selecionar
+                                imagem</button></span>
+                          </div>
+                        </div>
+                        <button type="submit" class="btn btn-gradient-primary mr-2">Salvar</button>
+                        <a role="button" href="/admin/clientes" class="btn btn-light">Cancelar</a>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- content-wrapper ends -->
+        <%- include('../includes/footer') %>
+      </div>
+      <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+  </div>
+  <!-- container-scroller -->
+  <%- include('../includes/plugins') %>
+</body>
+
+</html>

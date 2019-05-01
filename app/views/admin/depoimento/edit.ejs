@@ -1,0 +1,93 @@
+<%- include('../includes/head') %></head>
+
+<body>
+  <div class="container-scroller">
+
+    <%- include('../includes/navbar') %>
+
+    <div class="container-fluid page-body-wrapper">
+
+      <%- include('../includes/sidebar') %>
+
+      <div class="main-panel">
+        <div class="content-wrapper wow fadeIn">
+          <div class="page-header">
+            <h3 class="page-title"><span class="page-title-icon bg-gradient-primary text-white mr-2"><i
+                  class="mdi mdi-plus"></i></span>Editar depoimento</h3>
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">Depoimentos</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Editar depoimento</li>
+              </ol>
+            </nav>
+          </div>
+          <div class="row">
+            <div class="col-12 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <%- include('../includes/forms/error') %>
+                  <form class="forms-sample" action="/admin/depoimentos/edit" method="POST"
+                    enctype="multipart/form-data">
+                    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                    <input type="hidden" name="id" value="<%= depoimento.id %>">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group has">
+                          <label for="inputTitulo">Título</label>
+                          <input type="text" name="titulo" class="form-control has" id="inputTitulo"
+                            placeholder="Digite o titulo" value="<%= depoimento.titulo %>">
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group has">
+                          <label for="inputCliente">Cliente</label>
+                          <select type="text" name="cliente" class="form-control select-picker--cliente"
+                            title="Selecionar cliente" id="inputCliente" placeholder="Digite o cliente">
+                            <% if( depoimento.cliente) { %>
+                            <option selected value="<%= depoimento.cliente.id %>"> <%= depoimento.cliente.nome %>
+                            </option>
+                            <% } %>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-md-12">
+                        <div class="form-group mb-0">
+                          <label for="inputEncarregado">Depoimento</label>
+                          <textarea rows="4" type="text" name="descricao" class="form-control has" id="inputDescricao"
+                            value="<%= depoimento.descricao %>"><%= depoimento.descricao %></textarea>
+                        </div>
+                      </div>
+                      <div class="col-12 mb-3">
+                        <div class="row">
+                          <div class="col-4">
+                            <div class="form-check form-check-flat form-check-primary">
+                              <label class="form-check-label">
+                                <input type="checkbox" class="form-check-input" name="destaque" <%= depoimento.destaque ? 'checked' : '' %>>
+                                Destaque
+                                <i class="input-helper"></i></label></div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-12">
+                        <button type="submit" class="btn btn-gradient-primary mr-2">Salvar</button>
+                        <a role="button" href="/admin/depoimentos" class="btn btn-light">Cancelar</a>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- content-wrapper ends -->
+        <%- include('../includes/footer') %>
+      </div>
+      <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+  </div>
+  <!-- container-scroller -->
+  <%- include('../includes/plugins') %>
+</body>
+
+</html>

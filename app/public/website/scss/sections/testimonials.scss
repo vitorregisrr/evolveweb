@@ -1,0 +1,107 @@
+#testimonials {
+    min-height: 100vh;
+    @extend %dflex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 80px;
+
+    .testimonials__desc {
+        @extend %dflex;
+        justify-content: center;
+        flex-direction: column;
+        
+        .inner-title, .inner-desc, .testimonial__arrows{
+            text-align: left;
+
+            @media screen and(max-width: $bp-lg){
+                text-align: center;
+            }
+        }
+    }
+
+    .testimonial__slider {
+        background-position: center center;
+        background-size: contain;
+        background-repeat: no-repeat;
+        height: 500px;
+        width: 100%;
+        @extend %dflex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        &.non-webp{
+            background-image: url(../images/backgrounds/testimonial-bg.png);
+        }
+
+        &.webp{
+            background-image: url(../images/backgrounds/testimonial-bg.webp);
+        }
+
+        @media (max-width: 570px) {
+            & {
+                background-size: cover;
+            }
+        }
+
+        .owl-carousel {
+            width: 100%;
+            height: 350px;
+        }
+
+
+        &__item {
+            @extend %dflex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding-top: 30px;
+            height: 300px;
+
+            .testi__text {
+                font-size: 16px;
+                font-weight: 300;
+                max-height: 200px;
+                margin-bottom: 20px;
+                padding-top: 20px;
+                max-width: 60%;
+
+                @media screen and(max-width: 572px){
+                    max-width: 80%
+                }
+            }
+
+            .testi__name {
+                font-size: 18px;
+                font-weight: 400;
+                text-transform: uppercase;
+            }
+
+            .testi__img {
+                height: 40px;
+                width: auto;
+                margin-bottom: 10px;
+                object-fit: contain;
+            }
+        }
+    }
+
+    .testimonial__arrows {
+        >button {
+            font-size: 30px;
+            color: #d6314f7e !important;
+            background: none;
+            border: none;
+            @include transition(0.2s);
+            margin: 0 20px 0 0;
+            padding: 0;
+
+            &:hover {
+                color: $main-color;
+                cursor: pointer;
+            }
+        }
+    }
+}

@@ -1,0 +1,147 @@
+#some-works {
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    min-height: 100vh;
+    padding-top: 80px;
+    @extend %dflex;
+    justify-content: center;
+    align-items: center;
+
+    &.non-webp{
+        background-image: url(../images/backgrounds/heroes/hero-2.png);
+    }
+    
+    &.webp{
+        background-image: url(../images/backgrounds/heroes/hero-2.webp);
+    }
+
+    @media screen and (max-width: $bp-lg){
+        background-size: cover;
+    }
+
+    .centered{
+        width: 100%;
+    }
+}
+
+.works-list {
+
+    .owl-carousel {
+
+        .owl-dots {
+            width: 100%;
+            @extend %dflex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px 0;
+
+            .owl-dot {
+                width: 20px;
+                height: 10px;
+                border-radius: 20px;
+                margin: 0 5px;
+                background-color: $second-color;
+                opacity: .5;
+                @include transition(0.2s);
+
+                &:hover, &.active {
+                    opacity: 1;
+                }
+            }
+        }
+
+        .owl-item {
+            padding: 20px 0;
+            z-index: 2;
+            @extend %dflex;
+            justify-content: center;
+            align-items: center;
+
+            .work-card {
+                width: 650px;
+                cursor: pointer;
+
+                &__img{
+                    width: 100%;
+
+                    > img{
+                        filter: grayscale(70%) blur(1px);
+                    }
+                }
+
+                &__title {
+                    color: #bdb8b1;
+                }
+            
+                &__link{
+
+                    > a{
+                        background: $grad-gray;
+                        opacity: (0.5);
+                    }
+                }
+
+                @media screen and (max-width: 720px){
+                    width: 300px;
+
+                    &__img{
+                        overflow: hidden;
+                        transition: inherit;
+                
+                        > img{
+                            width: 100%;
+                        }
+                    }
+                }
+            
+            }
+
+            // Item do Centro e hover
+            &.center {
+                z-index: 3;
+
+                .work-card {
+                    @include scale(1.02);
+                }
+            }
+
+            &.center,
+            &:hover {
+                .work-card {
+
+                    &__img{
+                        > img{
+                            filter: none;
+                        }
+                    }
+                    &__title {
+                            color: $main-navy;
+                    }
+
+                    &__list {
+                        >li {
+                            color: #fff;
+                        }
+                    }
+
+                    &__link{
+    
+                        > a{
+                            background: $grad-red;
+                            opacity: 1;
+                            color: #fff;
+                        }
+                    }
+
+                    >p {
+                        >a {
+                            color: #fff;
+                            font-size: 17px;
+                        }
+                    }
+                }
+
+            }
+        }
+    }
+}

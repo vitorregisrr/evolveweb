@@ -1,0 +1,133 @@
+<div class="modal fade" id="novaFotoModal" tabindex="-1" role="dialog" aria-labelledby="novaFotoModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="novaFotoModalLabel">Nova foto</h5><button type="button" class="close"
+                    data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;
+                    </span></button>
+            </div>
+            <div class="modal-body">
+                <h5 class="mb-3">Selecione a foto</h4>
+                    <div class="form-group">
+                        <div class="input-group col-xs-12">
+                            <input type="file" id="inputImage" class="file-upload-default" id="inputImage">
+                            <input type="text" class="form-control file-upload-info" placeholder="Selecionar imagem"
+                                style="background-color: #fff">
+                            <span class="input-group-append">
+                                <button class="file-upload-browse btn btn-gradient-primary" type="button">Selecionar
+                                    imagem</button>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="alert alert-info">
+                        <p id="uploadMessage" style="text-transform: none;">Seleciona uma imagem e espere a
+                            janela fechar.</p>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>
+<input type="hidden" value="<%= projeto._id %>" id="inputId">
+<input type="hidden" value="<%= csrfToken %>" id="csurfToken">
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+            const inputImage = document.getElementById('inputImage');
+            const id = document.getElementById('inputId').value;
+            const csurfToken = document.getElementById('csurfToken').value;
+            const box = document.getElementById('uploadMessage');
+
+            const setUploadMessage = status => {
+                switch (status) {
+                    case 'waiting':
+                        inputImage.disabled = false;
+                        box.className = 'alert alert-info';
+                        box.innerHTML = 'Por favor, selecione uma imagem e aguarde.';
+                        break;
+                    case 'uploading':
+                        inputImage.disabled = true;
+                        box.className = 'alert alert-warning';
+                        box.innerHTML = 'Imagem recebida! Estamos processando, por favor aguarde.';
+                        break;
+                    case 'error':
+                        inputImage.disabled = false;
+                        box.className = 'alert alert-danger';
+                        box.innerHTML =
+                            'O Arquivo recebido inválido ou houve uma falha no servidor. Tente novamente. ';
+                        break;
+                }
+            }
+
+            setUploadMessage('waiting');
+
+            const upload = (file) => {
+                var formData = new FormData();
+                formData.append('image', file);
+                formData.append('id', id);
+                formData.append('_csrf', csurfToken);
+                setUploadMessage('uploading');
+
+                fetch('/admin/projetos/addimage', {
+                        method: 'POST',
+                        body: formData
+                    })
+                    .then(response => response.json()).then(image => {
+                        image = JSON.parse(image);
+                        $('#novaFotoModal').modal('hide');
+                        setUploadMessage('waiting');
+                        $(inputImage).val('');
+                        $('#imagesTable').append(
+                            ` <tr> 
+                                <td> 
+                                    <div class="property-text"> <img src="${image.url}" style="height: 100px; width: 100px;
+                                     object-fit: cover"> </div> </td> <td> <span><button type="button"data-image="${image.public_id}"
+                                     onclick="removeImage(this)" class="btn btn-sm btn-gradient-primary">
+                                        <i class="fa fa-times"aria-hidden="true"></i> Remover</button></span>
+                                </td> 
+                            </tr> `
+                        );
+                    })
+                    .catch(error => {
+                        setUploadMessage('error');
+                        inputImage.value = '';
+                    });
+            }
+
+            ;
+            // Event handler executed when a file is selected
+            const onSelectFile = () => upload(inputImage.files[0]);
+            inputImage.addEventListener('change', onSelectFile, false);
+        }
+
+    );
+
+    const removeImage = (btn) => {
+        const csurfToken = document.getElementById('csurfToken').value;
+        const id = document.getElementById('inputId').value;
+        const imageId = $(btn).attr('data-image');
+        var formData = new FormData();
+        formData.append('imageId', imageId);
+        formData.append('id', id);
+        formData.append('_csrf', csurfToken);
+
+        fetch('/admin/projetos/removeimage', {
+
+                method: 'POST',
+                headers: {
+                    "csrf-token": csurfToken
+                },
+                body: formData
+            })
+            .then(response => response.json())
+            .then(success => {
+                console.log(success);
+                $(btn).closest('tr').remove();
+            })
+            .catch(error => {
+                    alert('Houve um erro ao apagar a imagem, reinciie a página e tente novamente!');
+                    console.log(error);
+                }
+
+            );
+    }
+</script>

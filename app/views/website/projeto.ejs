@@ -1,0 +1,88 @@
+<%- include('includes/head.ejs')%>
+</head>
+
+<body class="scrollbar-inner wow fadeIn">
+    <%- include('includes/nav.ejs')%>
+    <main>
+        <section id="banner" class="img-webp">
+            <div class="container">
+                <h2 class="subtitle wow fadeInDown" data-wow-delay="0.2s">Projeto</h2>
+                <h1 class="title ">
+                    <span class="wow fadeInDown" data-wow-delay="0.5s"><%= proj.titulo %></span>
+                </h1>
+
+            </div>
+        </section>
+
+        <section id="projeto">
+            <div class="projeto-description img-webp">
+                <div class="container">
+                    <div class="projeto-description__content wow fadeInUp">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h3 class="text-left inner-title">Descrição</h3>
+                                <p><%= proj.descricao %></p>
+                            </div>
+                            <div class="col-md-6">
+                                <h3 class="text-left inner-title color-white">Informações</h3>
+                                <ul class="list">
+                                    <li>Cliente: <span><%= proj.cliente.nome %></span></li>
+                                    <li>Categoria: <span><%= proj.categoria %></span></li>
+                                    <li>Link: <span><a href="<%= proj.link %>"><%= proj.link %></a></span>
+                                    </li>
+                                    <li>Ano: <span><%= proj.ano %></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid pt-5">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="projeto-images img-webp wow fadeInUp">
+                            <div class="owl-carousel owl-theme">
+
+                                <% if( proj.image) { %>
+                                <div class="item">
+                                    <img class="projeto-images__img lazy" data-src="<%= proj.image.secure_url %>"
+                                        alt="<%= proj.titulo %>">
+                                </div>
+                                <% } %>
+
+                                <% proj.images.forEach( img => { %>
+                                <div class="item">
+                                    <img class="projeto-images__img lazy" data-src="<%= img.secure_url %>"
+                                        alt="<%= proj.titulo %>">
+                                </div>
+                                <% }); %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <% if( depoimento) { %>
+            <div class="container pt-5">
+                <div class="projeto-testimonial img-webp wow fadeInUp">
+                    <div class="container">
+                        <h3 class="inner-title color-navy" data-wow-delay="0.2s">
+                            <span class="color-second">Depoimento</span> <span class="small">do cliente</span>
+                        </h3>
+                        <p class="inner-desc color-navy" data-wow-delay="0.3s">
+                            <%= depoimento.descricao %>
+                        </p>
+                        <img src="<%= proj.cliente.image.secure_url %>" class="mt-3" height="35">
+                        <p class="inner-desc color-navy text-right font-italic" data-wow-delay="0.3s"
+                            style="font-size: 14px;">
+                            - <%= proj.cliente.nome %>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <% } %>
+        </section>
+    </main>
+    <%- include('includes/footer.ejs')%>
+</body>
+
+</html>

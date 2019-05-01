@@ -1,0 +1,24 @@
+.form-group {
+    label{
+        color: #fff;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: 300;
+    }
+
+    .form-control {
+        border-radius: 14px;
+        background: none;
+        border: 1.3px solid $second-color;
+        outline: none;
+        color: #fff;
+
+        &:focus {
+            
+        }
+
+        &::placeholder{
+            color: rgba(255, 255, 255, 0.788);
+        }
+    }
+}

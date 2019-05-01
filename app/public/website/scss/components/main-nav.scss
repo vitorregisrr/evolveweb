@@ -1,0 +1,168 @@
+#main-nav {
+    padding: 30px 0;
+    @include transition;
+
+    .navbar-brand {
+        &>a>img {
+            height: 40px;
+            width: auto;
+            @include transition;
+        }
+    }
+
+    .navbar-toggler {
+        span {
+            display: block;
+            width: 22px;
+            height: 2px;
+            border-radius: 1px;
+            background: $main-color;
+        }
+
+        span+span {
+            margin-top: 4px;
+            width: 18px;
+        }
+    }
+
+    .navbar-nav {
+        li {
+            padding: 0 5px;
+            position: relative;
+            @include transition(0.2s);
+
+            >a {
+                font-weight: bold;
+                font-size: 14px;
+                text-align: center;
+                text-transform: uppercase;
+                color: #fff;
+                @include transition(0.2s);
+
+                &:hover {
+                    color: $main-color;
+                }
+            }
+
+            .external{
+                position: relative;
+
+                &::after{
+                    content: '\f08e';
+                    font-family: "FontAwesome";
+                    font-size: 9px;
+                    position: absolute;
+                    right: -6px;
+                    top: -8px;
+                    color: inherit;
+                }
+            }
+            
+            &.active a {
+                color: $main-color;
+            }
+
+            &.nav-btn {
+                margin-left: 0px;
+
+                >a {
+                    text-align: center;
+                    padding: 10px 34px !important;
+                }
+
+                &:hover {
+                    >a {
+                        color: #fff;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Shrinked Nav
+#main-header.shrink {
+    #main-nav {
+        background: rgba(255, 255, 255, 0.918);
+        padding: 15px 10px;
+        -webkit-box-shadow: 2px 6px 46px -15px rgba(0, 0, 0, 0.5);
+        -moz-box-shadow: 2px 6px 46px -15px rgba(0, 0, 0, 0.5);
+        box-shadow: 2px 6px 46px -15px rgba(0, 0, 0, 0.5);
+
+        .navbar-brand {
+            &>a>img {
+                height: 25px;
+            }
+        }
+
+        .navbar-nav {
+            li {
+                > a {
+                    color: $main-navy;
+
+                    &:hover {
+                        color: $main-color;
+                    }
+                }
+
+                &.active a{
+                    color: $main-color;
+                }
+
+                &.nav-btn {
+                    >a {
+                        color: #fff;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Medium Devices toggled styles
+@media screen and (max-width: $bp-lg) {
+    #main-header {
+        #main-nav {
+            padding: 15px 10px;
+
+            .navbar-brand {
+                >a>img {
+                    height: 30px;
+                    width: auto;
+                }
+            }
+
+            .navbar-collapse {
+                padding: 10px 5px;
+            }
+
+            .navbar-nav {
+                li {
+                    padding: 8px 0;
+                    @include transition(0.2s);
+
+                    &:not(:last-child) {
+                        border-bottom: 0.4px solid rgba(8, 2, 32, 0.219);
+                    }
+
+                    >a {
+                        font-weight: bold;
+                        text-align: left;
+                        text-transform: uppercase;
+                        color: #fff;
+                        @include transition(0.2s);
+
+                        &:hover {
+                            color: $main-color;
+                        }
+                    }
+
+                    &.nav-btn {
+                        margin-top: 8px;
+                        margin-left: 0;
+                    }
+                }
+            }
+        }
+    }
+}

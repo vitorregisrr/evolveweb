@@ -1,0 +1,67 @@
+#technologies {
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    min-height: 70vh;
+    padding-top: 80px;
+    @extend %dflex;
+    justify-content: center;
+    align-items: center;
+   
+    .container{
+        @extend %dflex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    &.non-webp{
+        background-image: url(../images/backgrounds/heroes/hero-2.png);
+    }
+    
+    &.webp{
+        background-image: url(../images/backgrounds/heroes/hero-2.webp);
+    }
+
+    .inner-title, .inner-desc{
+        color: #fff;
+    }
+    
+    @media screen and (min-width: $bp-sm){
+        .inner-desc{
+            max-width: 70%;
+        }
+    }
+
+    @media screen and (min-width: 1820px){
+        background-position: center;
+    }
+}
+
+.thechnologies__list{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    &__item{
+        margin: 10px 20px;
+        height: 50px;
+        @include transition(0.3s);
+        filter: brightness(0) invert(1);
+
+        &:hover{
+            transform: scale(1.02);
+            filter: none;
+        }
+    }
+
+    
+    @media screen and (max-width: $bp-sm){
+        flex-direction: column;
+
+        &__item{
+            margin: 15px 0px;
+            height: 50px;
+        }
+    }
+
+}

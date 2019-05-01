@@ -1,0 +1,232 @@
+<%- include('includes/head.ejs')%>
+</head>
+
+<body class="scrollbar-inner wow fadeIn">
+    <%- include('includes/nav.ejs')%>
+    <main>
+        <section id="home" class="img-webp">
+            <div class="container">
+                <h1 class="title mb-3">
+                    <span class="wow fadeInDown" data-wow-delay="1.5s">Onde</span>
+                    <span class="wow bounceInDown red" data-wow-delay="2s">suas ideias</span>
+                    <br />
+                    <span class="wow fadeInLeft red" data-wow-delay="2.5s"> evoluem</span>
+                    <span class="wow fadeIn" data-wow-delay="3s">para</span>
+                    <span class="wow bounceInUp red" data-wow-delay="3.4s">tecnologia</span>
+                </h1>
+                <div class="wow fadeInUp d-flex justify-content-center" data-wow-delay="4.2s">
+                    <a role="button" class="btn-main font-weight-bold pulse">Quero evoluir minha ideia</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="whoare" class="img-webp">
+            <div class="container">
+                <div class="d-flex align-items-center flex-column">
+                    <h3 class="inner-title color-navy wow fadeInUp">
+                        <span class="underline-red img-webp">Quem somos?</span>
+                    </h3>
+                    <p class="inner-desc color-navy wow fadeInUp">
+                        Somos uma agência jovem com um grande desejo de <b>inovar e fazer diferente</b>. Nascemos da
+                        necessidade de quebrar padrões que limitam o potencial da sua marca na WEB e
+                        queremos evoluir seu negócio ao <b>próximo patamar digital</b>,
+                        utilizando as <b>tecnologias mais atuais</b> do mercado!
+                    </p>
+                </div>
+                <div class="work-with wow fadeInUp">
+                    <h5 class="title">Nós desenvolvemos: </h5>
+                    <div class="owl-carousel owl-theme">
+                        <div class="item">
+                            <div class="about-card">
+                                <i class="bg-icon fa fa-paint-brush"></i>
+                                <h4 class="about-card__title">Sistemas</h4>
+                                <ul class="about-card__list">
+                                    <li>Rápidos e leves</li>
+                                    <li>Práticos e bem-pensados</li>
+                                    <li>Acessáveis em qualquer lugar</li>
+                                    <li>Especiais para seus problemas</li>
+                                </ul>
+                                <p><a href="/sobre">Ler mais >></a></p>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="about-card wow">
+                                <i class="bg-icon fa fa-code"></i>
+                                <h4 class="about-card__title">Websites</h4>
+                                <ul class="about-card__list">
+                                    <li>Responsivos e bonitos</li>
+                                    <li>Com carregamento rápido</li>
+                                    <li>No topo do Google</li>
+                                    <li>Pensados no usuário</li>
+                                </ul>
+                                <p><a href="/sobre">Ler mais >></a></p>
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <div class="about-card wow">
+                                <i class="bg-icon fa fa-rocket"></i>
+                                <h4 class="about-card__title">Jogos WEB</h4>
+                                <ul class="about-card__list">
+                                    <li>Divertidos e criativos</li>
+                                    <li>Responsivos e adaptáveis</li>
+                                    <li>Com boa performance</li>
+                                    <li>Intuítivos e acessíveis</li>
+                                </ul>
+                                <p><a href="/sobre">Ler mais >></a></p>
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <div class="about-card wow">
+                                <i class="bg-icon fa fa-rocket"></i>
+                                <h4 class="about-card__title">Aplicativos</h4>
+                                <ul class="about-card__list">
+                                    <li>Leves e rápidos</li>
+                                    <li>Nativos e Multiplataforma</li>
+                                    <li>Bonitos e únicos</li>
+                                    <li>Intuítivos e práticos</li>
+                                </ul>
+                                <p><a href="/sobre">Ler mais >></a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="some-works" class="img-webp">
+            <div class="centered">
+                <div class="container">
+                    <h3 class="inner-title color-white wow fadeInUp" data-wow-delay="0.2s">
+                        <span class="small">Ultimos</span><span class="underline-green img-webp">Projetos</span>
+                    </h3>
+                    <p class="inner-desc color-white wow fadeInUp" data-wow-delay="0.3s">
+                        As últimas ideias que evoluímos!
+                    </p>
+
+                    <hr class="line--white wow fadeInUp" data-wow-delay="0.5s" />
+                </div>
+                <div class="works-list wow fadeInUp" data-wow-delay="0.6s">
+                    <div class="owl-carousel owl-theme">
+                        <% projs.forEach( proj => { %>
+                        <div class="item">
+                            <div class="work-card">
+                                <div class="work-card__img">
+                                    <img data-src="<%= proj.image.secure_url %>" src="/website/images/trumps/loading.gif"
+                                        class="lazy" alt="<%= proj.titulo %>">
+                                </div>
+                                <div class="work-card__content">
+                                    <h4 class="work-card__title"><%= proj.titulo %></h4>
+                                    <p class="work-card__desc"><%= proj.descricao %>
+                                    </p>
+                                    <div class="work-card__link">
+                                        <a href="/projeto<%= proj.codigo %>" role="button" class="btn-grad--red">
+                                            Ver Mais
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <% }); %>
+                    </div>
+                </div>
+                <div class="view-more container wow fadeInUp">
+                    <a role="button" href="/projetos" class="btn-grad--blue">Quero ver mais projetos</a>
+                </div>
+            </div>
+        </section>
+        <section id="testimonials">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 testimonials__desc text-lg-left">
+                        <h3 class="inner-title color-white wow fadeInUp mb-1" data-wow-delay="0.2s">
+                            <span class="small color-navy">O que nossos</span><span class="color-main">Clientes
+                                dizem</span></span>
+                        </h3>
+                        <p class="inner-desc color-white wow fadeInUp color-navy p-0" data-wow-delay="0.3s">
+                            Um pouco de quem já evoluiu suas idéias e seu negócio!
+                        </p>
+                        <div class="testimonial__arrows">
+                        </div>
+                    </div>
+                    <div class="col-lg-8 d-flex justify-content-center align-items-center p-0">
+                        <div class="testimonial__slider img-webp wow fadeInRight">
+                            <div class="owl-carousel owl-theme">
+                                <% deps.forEach( dep => { %>
+                                <div class="item">
+                                    <div class="testimonial__slider__item">
+                                        "<p class="testi__text"><%= dep.descricao %></p>"
+                                        <img data-src="<%= dep.cliente.image.secure_url %>" alt=""
+                                            class="testi__img lazy" src="/website/images/trumps/loading.gif" />
+                                    </div>
+                                </div>
+                                <% }); %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="speak-us" class="img-webp">
+            <div class="container">
+                <div class="speak-us__content wow fadeInUp">
+                    <div class="speak-us__content__container">
+                        <div class="row">
+                            <div class="col-lg-6 speak-us__content__contact">
+                                <h3 class="title">Fale Conosco!</h3>
+                                <p class="sub-title">Compartilhe sua idéia, e juntos, vamos evoluí-la! </p>
+                                <a href="/contato">
+                                    <div class="contact-item">
+                                        <i class="fa fa-rocket"></i>
+                                        <p class="desc">Tem uma ideia? Faça um orçamento!</p>
+                                        <h4 class="value text-uppercase">evoluir minha ideia</h4>
+                                    </div>
+                                </a>
+                                <a href="tel:5553999197942">
+                                    <div class="contact-item">
+                                        <i class="fa fa-mobile-phone"></i>
+                                        <p class="desc">Ligue para gente</p>
+                                        <h4 class="value"> <small>+55</small> (053) 99919-7942</h4>
+                                    </div>
+                                </a>
+                                <a href="mailto:sac@evolveme.com.br">
+                                    <div class="contact-item">
+                                        <i class="fa fa-envelope"></i>
+                                        <p class="desc">Envie-nos um email</p>
+                                        <h4 class="value"> contato@evolveme.com</h4>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-lg-6 speak-us__content__form">
+                                <h4 class="title">Ou envie uma mensagem rápida:</h4>
+                                <form action="/contato" method="POST">
+                                    <div class="form-group">
+                                        <label>Seu nome:</label>
+                                        <input placeholder="Digite seu nome" type="text" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Seu E-mail:</label>
+                                        <input placeholder="Digite seu e-mail" type="text" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Seu número:</label>
+                                        <input placeholder="Digite seu número" type="text" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Sua mensagem:</label>
+                                        <textarea rows="3" placeholder="Digite sua mensagem" type="text"
+                                            class="form-control"></textarea>
+                                    </div>
+                                    <button type="submit" class="btn-grad--blue w-100">Enviar mensagem rápida!</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <%- include('includes/footer.ejs')%>
+</body>
+
+</html>

@@ -1,0 +1,117 @@
+<%- include('../includes/head') %>
+</head>
+
+<body>
+    <div class="container-scroller">
+        <%- include('../includes/navbar') %>
+        <div class="container-fluid page-body-wrapper">
+            <%- include('../includes/sidebar') %>
+            <div class="main-panel">
+                <div class="content-wrapper wow fadeIn">
+                    <div class="page-header mb-0">
+                        <h3 class="page-title">
+                            <span class="page-title-icon bg-gradient-primary text-white mr-2">
+                                <i class="mdi mdi-plus"></i>
+                            </span>
+                            Gerenciar Projetos
+                        </h3>
+                    </div>
+                    <form action="/admin/projetos" method="GET">
+                        <div class="row">
+                            <div class="col-12 col-md-4">
+                                <div class="form-group mb-1">
+                                    <label for="nome"></label>
+                                    <input type="text" id="nome" name="nome" class="form-control mb-1"
+                                        placeholder="Pesquisar por nome">
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-3">
+                                <div class="form-group mb-1">
+                                    <label for="encarregado"></label>
+                                    <input name="encarregado" id="encarregado" type="text" class="form-control mb-1"
+                                        placeholder="Pesquisar por encarregado">
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-3">
+                                <div class="form-group mb-1">
+                                    <label for="email"></label>
+                                    <input name="email" id="email" type="text" class="form-control mb-1"
+                                        placeholder="Pesquisar por email">
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="form-group">
+                                    <button class="btn btn-sm btn-gradient-primary mt-4"><i
+                                            class="mdi mdi-filter"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="row mt-2">
+                        <div class="col-12">
+                            <% if( projetos.length > 0) { %>
+                            <div class="table-wrap--responsive">
+                                <table class="table-spaced">
+                                    <thead>
+                                        <th>Título</th>
+                                        <th>Cliente</th>
+                                        <th>Ano</th>
+                                        <th></th>
+                                    </thead>
+                                    <tbody>
+                                        <% projetos.forEach( projeto => { %>
+                                        <tr class="wow fadeInUp">
+                                            <td> <a href="/admin/projeto/edit/<%= projeto.cod %>"><%= projeto.titulo %></a>
+                                            </td>
+                                            <td><%= projeto.cliente.nome %></td>
+                                            <td><a href=""><%= projeto.ano %></a></td>
+                                            <td>
+                                                <a href="/admin/projetos/edit<%= projeto.codigo %>" role="button"
+                                                    class="btn btn-sm btn-inverse-info" data-toggle="tooltip"
+                                                    data-placement="bottom" title="Analisar">
+                                                    <i class="mdi mdi-pencil"></i></a>
+
+                                                <form data-confirm="true" action="/admin/projetos/delete"
+                                                    class="d-inline-block" method="POST" data-confirm="true">
+                                                    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                                                    <input type="hidden" name="id" value="<%= projeto.id %>">
+                                                    <button type="submit" class="btn btn-sm btn-inverse-danger"
+                                                        data-toggle="tooltip" data-placement="bottom"
+                                                        title="Pendenciar"><i class="mdi mdi-delete"></i></button>
+                                                </form>
+
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <% }); %>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <% } else { %>
+                            <div class="row">
+                                <div
+                                    class="col-12 d-flex justify-content-center align-items-center flex-column pt-5 pb-5">
+                                    <h2>Não encontramos nada :(</h2>
+                                    <p>Tente pesquisar de forma menos específica.</p>
+                                </div>
+                            </div>
+                            <% } %>
+                        </div>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col-12">
+                            <%- include('../includes/components/pagination') %></div>
+                    </div>
+                </div>
+                <!-- content-wrapper ends -->
+                <%- include('../includes/footer') %>
+                <%- include('../includes/modals/confirmAction') %>
+            </div>
+            <!-- main-panel ends -->
+        </div>
+        <!-- page-body-wrapper ends -->
+    </div>
+    <%- include('../includes/plugins') %>
+</body>
+
+</html>
