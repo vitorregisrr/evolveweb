@@ -12,7 +12,7 @@ const bodyParser = require('body-parser'),
     sitemapGenerator = require('./app/util/sitemap'),
     setLocals = require('./app/middleware/set-locals'),
     fs = require('fs'),
-    MONGO_URI = require('./app/util/MONGO_URI'),
+    MONGO_URI = require('./app/util/mongo'),
     nodeCron = require('node-cron');
 
 // Initializing app
