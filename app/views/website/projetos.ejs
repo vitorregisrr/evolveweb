@@ -25,18 +25,13 @@
                     </nav>
                 </div>
             </div>
-
-            <div class="row pt-3">
-
-            </div>
-        </div>
-        <div class="row p-4">
-            <% projs.forEach( proj => { %>
+            <div class="row p-4">
+                <% projs.forEach( proj => { %>
                 <div class="col-12 mb-4">
                     <div class="work-card  wow fadeInUp">
                         <div class="work-card__img">
-                            <img data-src="<%= proj.image.secure_url %>" src="/website/images/trumps/loading.gif" class="lazy"
-                                alt="<%= proj.titulo %>">
+                            <img data-src="<%= proj.image.secure_url %>" src="/website/images/trumps/loading.gif"
+                                class="lazy" alt="<%= proj.titulo %>">
                         </div>
                         <div class="work-card__content">
                             <h4 class="work-card__title"><%= proj.titulo %></h4>
@@ -49,14 +44,14 @@
                         </div>
                     </div>
                 </div>
-            <% }); %>
-            <div class="col-12 d-flex justify-content-center align-items-center">
-                <button class="btn-grad--red wow fadeInUp">
-                    <i class="fa fa-plus"></i>
-                </button>
+                <% }); %>
+                <div class="col-12 d-flex justify-content-center align-items-center">
+                    <button class="btn-grad--red wow fadeInUp">
+                        <i class="fa fa-plus"></i>
+                    </button>
+                </div>
             </div>
         </div>
-
     </main>
     <%- include('includes/footer.ejs')%>
 </body>
