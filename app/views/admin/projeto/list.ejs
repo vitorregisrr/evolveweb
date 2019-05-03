@@ -74,7 +74,7 @@
                                                 <form data-confirm="true" action="/admin/projetos/delete"
                                                     class="d-inline-block" method="POST" data-confirm="true">
                                                     <input type="hidden" name="_csrf" value="<%= csrfToken %>">
-                                                    <input type="hidden" name="id" value="<%= projeto.id %>">
+                                                    <input type="hidden" name="id" value="<%= projeto._id %>">
                                                     <button type="submit" class="btn btn-sm btn-inverse-danger"
                                                         data-toggle="tooltip" data-placement="bottom"
                                                         title="Pendenciar"><i class="mdi mdi-delete"></i></button>

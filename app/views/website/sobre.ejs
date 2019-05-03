@@ -137,22 +137,22 @@
                 <div class="thechnologies__list">
                     <a target="_blank"
                         href="https://imasters.com.br/desenvolvimento/por-que-stanford-trocou-java-por-javascript"><img
-                            data-src="/website/images/brands/javascript.png" alt="Logo Javscript" src="images/trumps/loading.gif"
-                            class="thechnologies__list__item lazy wow fadeInUp"></a>
+                            data-src="/website/images/brands/javascript.png" alt="Logo Javscript"
+                            src="images/trumps/loading.gif" class="thechnologies__list__item lazy wow fadeInUp"></a>
                     <a target="_blank"
                         href="https://www.treinaweb.com.br/blog/node-js-por-que-voce-deve-conhecer-essa-tecnologia/"><img
-                            data-src="/website/images/brands/nodejs.png" alt="Logo NodeJS" src="images/trumps/loading.gif"
-                            class="thechnologies__list__item lazy wow fadeInUp"></a>
+                            data-src="/website/images/brands/nodejs.png" alt="Logo NodeJS"
+                            src="images/trumps/loading.gif" class="thechnologies__list__item lazy wow fadeInUp"></a>
                     <a target="_blank" href=https://tableless.com.br/react-o-que-e-e-como-funciona-essa-ferramenta/"">
-                        <img data-src="/website/images/brands/react.png" alt="Logo React" src="images/trumps/loading.gif"
-                        class="thechnologies__list__item lazy wow fadeInUp"></a>
+                        <img data-src="/website/images/brands/react.png" alt="Logo React"
+                        src="images/trumps/loading.gif" class="thechnologies__list__item lazy wow fadeInUp"></a>
                     <a target="_blank" href="https://tableless.com.br/sass-um-outro-metodo-de-escrever-css/"><img
                             src="images/trumps/loading.gif" data-src="/website/images/brands/sass.png" alt="Logo Sass"
                             class="thechnologies__list__item lazy wow fadeInUp"></a>
                     <a target="_blank"
                         href="https://medium.com/leroy-merlin-brasil-tech/devo-usar-nosql-e-mongodb-951693aa0d34"><img
-                            data-src="/website/images/brands/mongodb.png" alt="Logo MongoDB" src="images/trumps/loading.gif"
-                            class="thechnologies__list__item lazy wow fadeInUp"></a>
+                            data-src="/website/images/brands/mongodb.png" alt="Logo MongoDB"
+                            src="images/trumps/loading.gif" class="thechnologies__list__item lazy wow fadeInUp"></a>
                 </div>
 
                 <hr class="line--white wow fadeInUp" data-wow-delay="0.5s" />
@@ -175,18 +175,15 @@
                     <div class="col-lg-8 d-flex justify-content-center align-items-center p-0">
                         <div class="testimonial__slider img-webp wow fadeInRight">
                             <div class="owl-carousel owl-theme">
+                                <% deps.forEach( dep => { %>
                                 <div class="item">
                                     <div class="testimonial__slider__item">
-                                        <p class="testi__text">Lorem ipsum dolor sit amet consectetur adipisicing
-                                            lorem10 elit. Minima possimus incidunt at sequi distinctio fugit illum
-                                            fugiat esse, veniam maxime? Lorem ipsum dolor sit, amet consectetur
-                                            adipisicing elit. Quis, vel?</p>
-                                        <img src="images/trumps/loading.gif"
-                                            data-src="/website/https://saopedrovidracaria.com.br/images/logo-white.png" alt=""
-                                            class="testi__img lazy" />
+                                        "<p class="testi__text"><%= dep.descricao %></p>"
+                                        <img data-src="<%= dep.cliente.image.secure_url %>" alt=""
+                                            class="testi__img lazy" src="/website/images/trumps/loading.gif" />
                                     </div>
                                 </div>
-
+                                <% }); %>
                             </div>
                         </div>
                     </div>

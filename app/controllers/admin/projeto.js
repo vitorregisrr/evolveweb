@@ -337,23 +337,23 @@ exports.deleteImage = (req, res, next) => {
 
 exports.delete = (req, res, next) => {
     Projeto.findOneAndDelete({
-            id: req.body.id
+            _id: req.body.id
         })
         .then(projeto => {
 
             if (!projeto) {
-                next(new Error('Não encontramos o produto para deletar.'))
+                next(new Error('Não encontramos o projeto para deletar.'))
             }
 
             // Remove main image from cloud
-            if (prop.image) {
-                cloudinary.uploader.destroy(prop.image.public_id);
+            if (projeto.image) {
+                cloudinary.uploader.destroy(projeto.image.public_id);
             }
 
             // Remove all secondary images from cloud
             let destroyPromise = [];
-            if (prop.images.length > 0) {
-                destroyPromise = prop.images.map(img => cloudinary.uploader.destroy(img.public_id))
+            if (projeto.images.length > 0) {
+                destroyPromise = projeto.images.map(img => cloudinary.uploader.destroy(img.public_id))
             }
 
             Promise.all(destroyPromise);

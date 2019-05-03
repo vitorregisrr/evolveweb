@@ -62,8 +62,7 @@
                 cursor: pointer;
 
                 &__img{
-                    width: 100%;
-
+                    
                     > img{
                         filter: grayscale(70%) blur(1px);
                     }
@@ -101,14 +100,13 @@
                 z-index: 3;
 
                 .work-card {
-                    @include scale(1.02);
+                    @include scale(1.05);
                 }
             }
 
             &.center,
             &:hover {
                 .work-card {
-
                     &__img{
                         > img{
                             filter: none;

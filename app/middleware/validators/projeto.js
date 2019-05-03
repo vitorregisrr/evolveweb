@@ -12,7 +12,7 @@ exports.new = [
         .isString()
         .isLength({
             min: 5,
-            max: 30
+            max: 50
         }),
 
         body('descricao', 'O campo <strong>Descrição</strong> e obrigatório!')
@@ -81,7 +81,7 @@ exports.edit = [
         .isString()
         .isLength({
             min: 5,
-            max: 30
+            max: 50
         }),
 
         body('descricao', 'O campo <strong>Descrição</strong> e obrigatório!')

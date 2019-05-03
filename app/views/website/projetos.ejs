@@ -16,37 +16,24 @@
         <div class="container">
             <div class="row pb-4">
                 <div class="col-12 d-flex justify-content-center align-items-center">
-                    <nav class="button-group--grad">
-                        <button class="button-group--grad__button active">Todos</button>
-                        <button class="button-group--grad__button">Websites</button>
-                        <button class="button-group--grad__button">Aplicativos</button>
-                        <button class="button-group--grad__button">Sistemas</button>
-                        <button class="button-group--grad__button">Jogos</button>
+                    <nav class="button-group--grad" id="filterBtns">
+                        <button class="button-group--grad__button active" data-filter="">Todos</button>
+                        <button class="button-group--grad__button" data-filter="website">Websites</button>
+                        <button class="button-group--grad__button" data-filter="aplicativo">Aplicativos</button>
+                        <button class="button-group--grad__button" data-filter="sistema">Sistemas</button>
+                        <button class="button-group--grad__button" data-filter="jogo">Jogos</button>
                     </nav>
                 </div>
             </div>
-            <div class="row p-4">
-                <% projs.forEach( proj => { %>
-                <div class="col-12 mb-4">
-                    <div class="work-card  wow fadeInUp">
-                        <div class="work-card__img">
-                            <img data-src="<%= proj.image.secure_url %>" src="/website/images/trumps/loading.gif"
-                                class="lazy" alt="<%= proj.titulo %>">
-                        </div>
-                        <div class="work-card__content">
-                            <h4 class="work-card__title"><%= proj.titulo %></h4>
-                            <p class="work-card__desc"><%= proj.descricao %> </p>
-                            <div class="work-card__link">
-                                <a href="/projeto:<%= proj.codigo %>" role="button" class="btn-grad--red">
-                                    Ver Mais
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <% }); %>
+            <div class="row p-4" id="projs-row">
+
+            </div>
+            <div class="row d-flex justify-content-center align-items-center pb-4">
+                <img src="/website/images/trumps/loading.gif" height="100" alt="" id="loading">
+            </div>
+            <div class="row">
                 <div class="col-12 d-flex justify-content-center align-items-center">
-                    <button class="btn-grad--red wow fadeInUp">
+                    <button class="btn-grad--red wow fadeInUp" id="btnLoadMore">
                         <i class="fa fa-plus"></i>
                     </button>
                 </div>
@@ -54,6 +41,75 @@
         </div>
     </main>
     <%- include('includes/footer.ejs')%>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let current_page = 1;
+            let categoria = false;
+            const page_items = 5;
+            const loading = $('#loading');
+
+            const loadMore = () => {
+                loading.show();
+
+                fetch(`/api/getprojetos?current_page=${current_page}&page_items=${page_items}&categoria=${categoria}`, {
+                        method: 'GET'
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        data = JSON.parse(data);
+                        data.projetos.forEach(proj => {
+                            $('#projs-row').append(
+                                `<div class="col-12 mb-4">
+                                    <div class="work-card  wow fadeInUp">
+                                        <div class="work-card__img">
+                                            <img src="${ proj.image.secure_url }" alt="${ proj.titulo }">
+                                        </div>
+                                        <div class="work-card__content">
+                                            <h4 class="work-card__title">${ proj.titulo }</h4>
+                                            <p class="work-card__desc">${ proj.descricao } </p>
+                                            <div class="work-card__link">
+                                                <a href="/projeto:${ proj.codigo }" role="button" class="btn-grad--red">
+                                                    Ver Mais
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>`
+                            );
+                        });
+
+                        if (!data.has_next) {
+                            $('#btnLoadMore').remove();
+                        }
+
+                        loading.hide();
+                        current_page++;
+                    })
+                    .catch(error => {
+                        console.log(error)
+                    });
+            }
+
+            const btnLoadMore = document.getElementById('btnLoadMore');
+            btnLoadMore.addEventListener('click', loadMore);
+            loadMore();
+
+            const setCategory = function () {
+                loading.show();
+                current_page = 1;
+                categoria = $(this).data('filter');
+                $(this).siblings().removeClass('active');
+                $(this).addClass('active');
+                $('#projs-row').children('.col-12').fadeOut(300, function () {
+                    $(this).remove();
+                })
+                loadMore();
+            }
+
+            $('#filterBtns button').click(setCategory);
+        });
+    </script>
 </body>
 
 </html>

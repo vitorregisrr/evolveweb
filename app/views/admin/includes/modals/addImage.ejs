@@ -91,9 +91,7 @@
                         setUploadMessage('error');
                         inputImage.value = '';
                     });
-            }
-
-            ;
+            };
             // Event handler executed when a file is selected
             const onSelectFile = () => upload(inputImage.files[0]);
             inputImage.addEventListener('change', onSelectFile, false);

@@ -14,7 +14,9 @@
     &__img{
         overflow: hidden;
         transition: inherit;
-
+        width: 40%;
+        min-width: 40%;
+        
         > img{
             border-radius: 15px 0 0 15px;
             object-fit: cover;
@@ -28,6 +30,7 @@
     @media screen and (max-width: 720px){
         flex-direction: column;
         height: 500px;
+        width: 100%;
 
         &__img{
             width: 100%;
@@ -40,7 +43,7 @@
     }
 
     &__content{
-        padding: 40px 60px 40px 40px;
+        padding: 26px 60px 40px 40px;
         transition: inherit;
     }
 
@@ -51,6 +54,9 @@
         text-transform: uppercase;
         margin-bottom: 20px;
         transition: inherit;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
     }
 
     &__desc {
@@ -59,7 +65,13 @@
         letter-spacing: 2px;
         text-align: justify;
         transition: inherit;
-        margin-bottom: 40px;
+        margin-bottom: 20px;
+        height: 50%;
+        overflow: hidden;
+
+        @media screen and (max-width: 720px){
+            height: 60%;
+        }
     }
 
     &__link{
