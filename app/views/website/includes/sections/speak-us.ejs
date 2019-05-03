@@ -1,0 +1,57 @@
+<div class="speak-us__content wow fadeInUp">
+    <div class="speak-us__content__container">
+        <%- include('../forms/error') %>
+        <%- include('../forms/success') %>
+        <div class="row">
+            <div class="col-lg-6 speak-us__content__contact">
+                <h3 class="title">Fale Conosco!</h3>
+                <p class="sub-title">Compartilhe sua idéia, e juntos, vamos evoluí-la! </p>
+                <a href="/contato">
+                    <div class="contact-item">
+                        <i class="fa fa-rocket"></i>
+                        <p class="desc">Tem uma ideia? Faça um orçamento!</p>
+                        <h4 class="value text-uppercase">evoluir minha ideia</h4>
+                    </div>
+                </a>
+                <a href="tel:5553999197942">
+                    <div class="contact-item">
+                        <i class="fa fa-mobile-phone"></i>
+                        <p class="desc">Ligue para gente</p>
+                        <h4 class="value"> <small>+55</small> (053) 99919-7942</h4>
+                    </div>
+                </a>
+                <a href="mailto:sac@evolveme.com.br">
+                    <div class="contact-item">
+                        <i class="fa fa-envelope"></i>
+                        <p class="desc">Envie-nos um email</p>
+                        <h4 class="value">sac@evolveme.com.br</h4>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-6 speak-us__content__form">
+                <h4 class="title">Ou envie uma mensagem rápida:</h4>
+                <form action="/contato" method="POST">
+                    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                    <div class="form-group">
+                        <label>Seu nome:</label>
+                        <input placeholder="Digite seu nome" name="nome" type="text" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>Seu E-mail:</label>
+                        <input placeholder="Digite seu e-mail" name="email" type="text" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>Seu Telefone:</label>
+                        <input placeholder="Digite seu telefone" name="telefone" type="text" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>Sua mensagem:</label>
+                        <textarea rows="3" placeholder="Digite sua mensagem" name="mensagem" type="text"
+                            class="form-control"></textarea>
+                    </div>
+                    <button type="submit" class="btn-grad--blue w-100">Enviar mensagem rápida!</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

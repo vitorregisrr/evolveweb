@@ -62,65 +62,7 @@
         </section>
         <section class="pt-3">
             <div class="container">
-                <div class="work-with wow fadeInUp">
-                    <h5 class="title">Nós desenvolvemos: </h5>
-                    <div class="owl-carousel owl-theme">
-                        <div class="item">
-                            <div class="about-card">
-                                <i class="bg-icon fa fa-paint-brush"></i>
-                                <h4 class="about-card__title">Sistemas</h4>
-                                <ul class="about-card__list">
-                                    <li>Rápidos e leves</li>
-                                    <li>Práticos e bem-pensados</li>
-                                    <li>Acessáveis em qualquer lugar</li>
-                                    <li>Especiais para seus problemas</li>
-                                </ul>
-                                <p><a href="#">Ler mais >></a></p>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="about-card wow">
-                                <i class="bg-icon fa fa-code"></i>
-                                <h4 class="about-card__title">Websites</h4>
-                                <ul class="about-card__list">
-                                    <li>Responsivos e bonitos</li>
-                                    <li>Com carregamento rápido</li>
-                                    <li>No topo do Google</li>
-                                    <li>Pensados no usuário</li>
-                                </ul>
-                                <p><a href="#">Ler mais >></a></p>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="about-card wow">
-                                <i class="bg-icon fa fa-rocket"></i>
-                                <h4 class="about-card__title">Jogos WEB</h4>
-                                <ul class="about-card__list">
-                                    <li>Divertidos e criativos</li>
-                                    <li>Responsivos e adaptáveis</li>
-                                    <li>Com boa performance</li>
-                                    <li>Intuítivos e acessíveis</li>
-                                </ul>
-                                <p><a href="#">Ler mais >></a></p>
-                            </div>
-                        </div>
-
-                        <div class="item">
-                            <div class="about-card wow">
-                                <i class="bg-icon fa fa-rocket"></i>
-                                <h4 class="about-card__title">Aplicativos</h4>
-                                <ul class="about-card__list">
-                                    <li>Leves e rápidos</li>
-                                    <li>Nativos e Multiplataforma</li>
-                                    <li>Bonitos e únicos</li>
-                                    <li>Intuítivos e práticos</li>
-                                </ul>
-                                <p><a href="#">Ler mais >></a></p>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
+                <%- include('includes/sections/whoare') %>
             </div>
         </section>
         <section id="technologies" class="img-webp">
@@ -192,60 +134,7 @@
         </section>
         <section id="speak-us">
             <div class="container">
-                <div class="speak-us__content wow fadeInUp">
-                    <div class="speak-us__content__container">
-                        <div class="row">
-                            <div class="col-lg-6 speak-us__content__contact">
-                                <h3 class="title">Fale Conosco!</h3>
-                                <p class="sub-title">Compartilhe sua idéia, e juntos, vamos evoluí-la! </p>
-                                <a href="/contato.html">
-                                    <div class="contact-item">
-                                        <i class="fa fa-rocket"></i>
-                                        <p class="desc">Tem uma ideia? Orce aqui mesmo</p>
-                                        <h4 class="value text-uppercase">evoluir minha ideia</h4>
-                                    </div>
-                                </a>
-                                <a href="#">
-                                    <div class="contact-item">
-                                        <i class="fa fa-mobile-phone"></i>
-                                        <p class="desc">Ligue para gente</p>
-                                        <h4 class="value"> <small>+55</small> (053) 99919-7942</h4>
-                                    </div>
-                                </a>
-                                <a href="#">
-                                    <div class="contact-item">
-                                        <i class="fa fa-envelope"></i>
-                                        <p class="desc">Envie-nos um email</p>
-                                        <h4 class="value"> contato@evolveme.com</h4>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-lg-6 speak-us__content__form">
-                                <h4 class="title">Ou envie uma mensagem rápida:</h4>
-                                <form action="">
-                                    <div class="form-group">
-                                        <label>Seu nome:</label>
-                                        <input placeholder="Digite seu nome" type="text" class="form-control">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Seu E-mail:</label>
-                                        <input placeholder="Digite seu e-mail" type="text" class="form-control">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Seu número:</label>
-                                        <input placeholder="Digite seu número" type="text" class="form-control">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Sua mensagem:</label>
-                                        <textarea rows="3" placeholder="Digite sua mensagem" type="text"
-                                            class="form-control"></textarea>
-                                    </div>
-                                    <button type="submit" class="btn-grad--blue w-100">Enviar mensagem rápida!</button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <%- include('includes/sections/speak-us') %>
             </div>
         </section>
     </main>

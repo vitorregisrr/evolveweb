@@ -1,27 +1,28 @@
 const Projeto = require('../../models/projeto'),
-    Depoimento = require('../../models/depoimento');
+    Depoimento = require('../../models/depoimento'),
+    transporter = require('../../util/email-transporter')();
 
-    exports.getIndex = (req, res, next) => {
-        Projeto.find({
-                destaque: true
-            })
-            .then(projs => {
-                Depoimento.find({
-                        destaque: true
+exports.getIndex = (req, res, next) => {
+    Projeto.find({
+            destaque: true
+        })
+        .then(projs => {
+            Depoimento.find({
+                    destaque: true
+                })
+                .populate('cliente')
+                .then(deps => {
+                    return res.render('website/index', {
+                        pageTitle: 'Início',
+                        path: '/',
+                        projs,
+                        deps
                     })
-                    .populate('cliente')
-                    .then(deps => {
-                        return res.render('website/index', {
-                            pageTitle: 'Início',
-                            path: '/',
-                            projs,
-                            deps
-                        })
-                    })
-                    .catch(err => next(err, 500));
-            })
-            .catch(err => next(err, 500));
-    }
+                })
+                .catch(err => next(err, 500));
+        })
+        .catch(err => next(err, 500));
+}
 
 exports.getProjeto = (req, res, next) => {
     Projeto.findOne({
@@ -63,10 +64,15 @@ exports.getProjetos = (req, res, next) => {
 }
 
 exports.getSobre = (req, res, next) => {
-    return res.render('website/sobre', {
-        pageTitle: 'Sobre',
-        path: '/sobre'
-    })
+    Depoimento.find()
+        .populate('cliente')
+        .then(deps => {
+            return res.render('website/sobre', {
+                pageTitle: 'Sobre',
+                path: '/sobre',
+                deps
+            })
+        })
 }
 
 exports.getContato = (req, res, next) => {
@@ -77,8 +83,43 @@ exports.getContato = (req, res, next) => {
 }
 
 exports.postContato = (req, res, next) => {
-    return res.render('website/contato', {
-        pageTitle: 'Contato',
-        path: '/contato'
+    transporter.sendMail({
+        to: 'sac@evolveme.com.br',
+        from: req.body.email,
+        subject: 'Mensagem de contato recebida pelo site!',
+        html: `
+        <h3> Você recebeu uma nova mensagem de contato a partir do formulário do seu site! </h3>
+        <p>De: ${req.body.nome}</p>
+        <p>Telefone: ${req.body.telefone}</p>
+        <p>E mail: ${req.body.email}</p>
+        <p>Com a mensagem: ${req.body.mensagem}</p>
+        <h5> Responda o mais rápido possível, não deixe seu cliente esperando! </h5>
+    `
+    })
+    .then(resul => {
+        res.render('website/contato', {
+            pageTitle: "Contato",
+            path: "/contato",
+            errorMessage: [],
+            successMessage: ['Mensagem enviada, assim que possível entraremos em contato com uma resposta!'],
+            csrfToken: req.csrfToken(),
+            form: false,
+        });
+    })
+    .catch(err => next(err))
+}
+
+
+exports.getEvoluir = (req, res, next) => {
+    return res.render('website/evoluir', {
+        pageTitle: 'Evoluir',
+        path: '/evoluir'
+    })
+}
+
+exports.postEvoluir = (req, res, next) => {
+    return res.render('website/evoluir', {
+        pageTitle: 'Evoluir',
+        path: '/evoluir'
     })
 }

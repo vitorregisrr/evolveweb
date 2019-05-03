@@ -2,8 +2,8 @@
      <nav id="main-nav" class="navbar navbar-expand-lg fixed-top">
          <div class="container">
              <div class="navbar-brand wow fadeInLeft">
-                 <a href="index.html"><img class="img-webp" data-original="/website/images/logo.png" data-webp="/website/images/logo.png"
-                         alt="Logo Evolve Soluções Web"></a>
+                 <a href="index.html"><img class="img-webp" data-original="/website/images/logo.png"
+                         data-webp="/website/images/logo.png" alt="Logo Evolve Soluções Web"></a>
              </div>
              <button class="navbar-toggler wow bounceInDown" type="button" data-toggle="collapse"
                  data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
@@ -17,20 +17,30 @@
                      <li class="nav-item wowNonMobile fadeInDown" data-wow-delay="0.2s">
                          <a class="nav-link" href="<%= path == '/' ? '#home' : '/' %>">Início</a>
                      </li>
-                     <li class="nav-item wowNonMobile fadeInDown" data-wow-delay="0.4s">
+                     <li class="nav-item wowNonMobile fadeInDown <%= path == '/sobre' ? 'active' : '' %>"
+                         data-wow-delay="0.4s">
                          <a class="nav-link" href="<%= path == '/' ? '#whoare' : '/sobre' %>">Quem Somos</a>
                      </li>
-                     <li class="nav-item wowNonMobile fadeInDown" data-wow-delay="0.6s">
+                     <li class="nav-item wowNonMobile fadeInDown <%= path == '/projetos' ? 'active' : '' %>"
+                         data-wow-delay="0.6s">
                          <a class="nav-link" href="<%= path == '/' ? '#some-works' : '/projetos' %>">Nossos Projetos</a>
                      </li>
+                     <% if( path === '/' ) { %>
                      <li class="nav-item wowNonMobile fadeInDown" data-wow-delay="0.4s">
                          <a class="nav-link" href="<%= path == '/' ? '#testimonials' : '/sobre' %>">Quem já confiou</a>
                      </li>
+                     <% } %>
+                     <% if( path !== '/' ) { %>
+                     <li class="nav-item wowNonMobile fadeInDown <%= path == '/contato' ? 'active' : '' %>" data-wow-delay="0.4s">
+                         <a class="nav-link" href="/contato">Contato</a>
+                     </li>
+                     <% } %>
                      <li class="nav-item wowNonMobile fadeInDown" data-wow-delay="0.4s">
                          <a class="nav-link" href="/blog"><span class="external">Blog</span></a>
                      </li>
                      <li class="nav-item nav-btn wowNonMobile bounceInDown" data-wow-delay="0.8s">
-                         <a class="nav-link btn-main pulse" role="button" href="<%= path == '/' ? '#speak-us' : '/contato' %>">Tenho uma ideia!</a>
+                         <a class="nav-link btn-main pulse" role="button"
+                             href="<%= path == '/' ? '#speak-us' : '/evoluir' %>">Tenho uma ideia!</a>
                      </li>
                  </ul>
              </div>

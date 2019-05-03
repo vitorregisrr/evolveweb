@@ -13,6 +13,8 @@ router.get('/projetos', setLocals, websiteCtrl.getProjetos);
 router.get('/projeto:cod', setLocals, websiteCtrl.getProjeto);
 router.get('/api/getprojetos', setLocals, websiteAPI.getProjetos);
 router.get('/contato', setLocals, websiteCtrl.getContato);
-router.post('/contato', validators.contato.new, websiteCtrl.postContato);
+router.post('/contato', setLocals, validators.contato.fast, websiteCtrl.postContato);
+router.get('/evoluir', setLocals, websiteCtrl.getEvoluir);
+router.post('/evoluir', validators.contato.evoluir, websiteCtrl.postEvoluir);
 
 module.exports = router;

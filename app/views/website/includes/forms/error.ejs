@@ -1,0 +1,18 @@
+<% try { %>
+<%  if(errorMessage) { 
+        if(errorMessage.length > 0) { %>
+            <div class="alert alert-danger mt-2 text-center" role="alert">
+                <% errorMessage.forEach( (err, i) => { %>
+                <p>
+                    <%- err.msg ? err.msg : err %>
+                </p>
+                <% if( i != errorMessage.length - 1 ){ %>
+                <hr />
+                <% }%>
+                <% }) %>
+            </div>
+        <% }
+    } %>
+<% } catch{ %>
+    <%= '' %>
+<% } %>
