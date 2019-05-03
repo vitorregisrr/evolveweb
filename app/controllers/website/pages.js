@@ -43,7 +43,8 @@ exports.getProjeto = (req, res, next) => {
                         pageTitle: 'Projetos',
                         path: '/projetos',
                         proj,
-                        depoimento
+                        depoimento,
+                        form: false
                     })
                 })
                 .catch(err => next(err, 500));
@@ -58,7 +59,8 @@ exports.getProjetos = (req, res, next) => {
             return res.render('website/projetos', {
                 pageTitle: 'Projetos',
                 path: '/projetos',
-                projs
+                projs,
+                form: false
             })
         })
         .catch(err => next(err, 500));
@@ -71,7 +73,8 @@ exports.getSobre = (req, res, next) => {
             return res.render('website/sobre', {
                 pageTitle: 'Sobre',
                 path: '/sobre',
-                deps
+                deps,
+                form: false
             })
         })
 }
