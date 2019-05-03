@@ -34,20 +34,20 @@
                     <input type="hidden" name="_csrf" value="<%= csrfToken %>">
                     <div class="form-group">
                         <label>Seu nome:</label>
-                        <input placeholder="Digite seu nome" name="nome" type="text" class="form-control">
+                        <input placeholder="Digite seu nome" name="nome" type="text" class="form-control" value="<%= form ? form.values.nome : '' %>">
                     </div>
                     <div class="form-group">
                         <label>Seu E-mail:</label>
-                        <input placeholder="Digite seu e-mail" name="email" type="text" class="form-control">
+                        <input placeholder="Digite seu e-mail" name="email" type="text" class="form-control" value="<%= form ? form.values.email : '' %>">
                     </div>
                     <div class="form-group">
                         <label>Seu Telefone:</label>
-                        <input placeholder="Digite seu telefone" name="telefone" type="text" class="form-control">
+                        <input placeholder="Digite seu telefone" name="telefone" type="text" class="form-control" value="<%= form ? form.values.telefone : '' %>">
                     </div>
                     <div class="form-group">
                         <label>Sua mensagem:</label>
                         <textarea rows="3" placeholder="Digite sua mensagem" name="mensagem" type="text"
-                            class="form-control"></textarea>
+                            class="form-control"><%= form ? form.values.mensagem : '' %></textarea>
                     </div>
                     <button type="submit" class="btn-grad--blue w-100">Enviar mensagem rápida!</button>
                 </form>

@@ -16,7 +16,8 @@ exports.getIndex = (req, res, next) => {
                         pageTitle: 'Início',
                         path: '/',
                         projs,
-                        deps
+                        deps,
+                        form: false
                     })
                 })
                 .catch(err => next(err, 500));
@@ -78,7 +79,8 @@ exports.getSobre = (req, res, next) => {
 exports.getContato = (req, res, next) => {
     return res.render('website/contato', {
         pageTitle: 'Contato',
-        path: '/contato'
+        path: '/contato',
+        form: false
     })
 }
 
@@ -101,25 +103,10 @@ exports.postContato = (req, res, next) => {
             pageTitle: "Contato",
             path: "/contato",
             errorMessage: [],
-            successMessage: ['Mensagem enviada, assim que possível entraremos em contato com uma resposta!'],
+            successMessage: ['Recebemos sua mensagem! Responderemos o mais rápido possível.'],
             csrfToken: req.csrfToken(),
             form: false,
         });
     })
     .catch(err => next(err))
-}
-
-
-exports.getEvoluir = (req, res, next) => {
-    return res.render('website/evoluir', {
-        pageTitle: 'Evoluir',
-        path: '/evoluir'
-    })
-}
-
-exports.postEvoluir = (req, res, next) => {
-    return res.render('website/evoluir', {
-        pageTitle: 'Evoluir',
-        path: '/evoluir'
-    })
 }
