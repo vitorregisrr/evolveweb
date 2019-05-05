@@ -92,19 +92,7 @@
                         </div>
                     </div>
                     <div class="col-lg-8 d-flex justify-content-center align-items-center p-0">
-                        <div class="testimonial__slider img-webp wow fadeInRight">
-                            <div class="owl-carousel owl-theme">
-                                <% deps.forEach( dep => { %>
-                                <div class="item">
-                                    <div class="testimonial__slider__item">
-                                        "<p class="testi__text"><%= dep.descricao %></p>"
-                                        <img data-src="<%= dep.cliente.image.secure_url %>" alt=""
-                                            class="testi__img lazy" src="/website/images/trumps/loading.gif" />
-                                    </div>
-                                </div>
-                                <% }); %>
-                            </div>
-                        </div>
+                        <%- include('includes/components/testimonials-slider') %>
                     </div>
                 </div>
             </div>
