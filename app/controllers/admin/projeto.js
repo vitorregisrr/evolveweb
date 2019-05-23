@@ -127,6 +127,7 @@ exports.postNew = (req, res, next) => {
     const form = {
         titulo: req.body.titulo,
         descricao: req.body.descricao,
+        categoria: req.body.categoria,
         link: req.body.link,
         ano: req.body.ano,
         cliente: req.body.cliente,
@@ -186,6 +187,7 @@ exports.postEdit = (req, res, next) => {
 
             projeto.titulo = req.body.titulo;
             projeto.descricao = req.body.descricao;
+            projeto.categoria = req.body.categoria;
             projeto.link = req.body.link;
             projeto.cliente = req.body.cliente;
             projeto.destaque = req.body.destaque == 'on' ? true : false;

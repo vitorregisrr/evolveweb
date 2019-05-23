@@ -39,15 +39,15 @@
                       <div class="col-md-6">
                         <div class="form-group">
                           <label for="inputLink">Link do projeto</label>
-                          <input type="text" name="link" class="form-control" id="inputLink"
-                            placeholder="Digite o link" value="<%= form ? form.values.link : '' %>">
+                          <input type="text" name="link" class="form-control" id="inputLink" placeholder="Digite o link"
+                            value="<%= form ? form.values.link : '' %>">
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="form-group">
                           <label for="inputAno">Ano</label>
-                          <input type="text" name="ano" class="form-control" id="inputAno"
-                            placeholder="Digite o ano" value="<%= form ? form.values.ano : '' %>">
+                          <input type="text" name="ano" class="form-control" id="inputAno" placeholder="Digite o ano"
+                            value="<%= form ? form.values.ano : '' %>">
                         </div>
                       </div>
                       <div class="col-md-6">
@@ -55,6 +55,31 @@
                           <label for="inputCliente">Cliente</label>
                           <select type="text" name="cliente" class="select-picker--cliente form-control"
                             title="Selecionar cliente" id="inputCliente" placeholder="Digite o cliente">
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-12">
+                        <div class="form-group">
+                          <label for="inputCategoria">Categoria</label>
+                          <select type="text" name="categoria" class="form-control select-picker" title="Selecionar categoria"
+                            id="inputCategoria">
+                            <option <%= form ? form.values.categoria === 'Website' ? 'selected': ''  : '' %>
+                              value="Website">
+                              Website</option>
+                            <option <%= form ? form.values.categoria === 'Sistema' ? 'selected': ''  : '' %>
+                              value="Sistema">
+                              Sistema</option>
+                            <option <%= form ? form.values.categoria === 'Aplicativo' ? 'selected': ''  : '' %>
+                              value="Aplicativo">Aplicativo</option>
+                            <option <%= form ? form.values.categoria === 'Jogo' ? 'selected': ''  : '' %> value="Jogo">
+                              Jogo
+                            </option>
+                            <option <%= form ? form.values.categoria === 'Plugin' ? 'selected': ''  : '' %>
+                              value="Plugin">
+                              Plugin</option>
+                            <option <%= form ? form.values.categoria === 'Outros' ? 'selected': ''  : '' %>
+                              value="Outros">
+                              Outros</option>
                           </select>
                         </div>
                       </div>

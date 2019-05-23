@@ -4,13 +4,18 @@ exports.getProjetos = (req, res, next) => {
     const current_page = parseInt(req.query.current_page) || 1;
     const page_items = parseInt(req.query.page_items) || 5;
 
-    Projeto.find()
+    query = {};
+    if( req.query.categoria ){
+        query.categoria = req.query.categoria
+    }
+    
+    Projeto.find({...query})
         .countDocuments()
         .then(num => {
             const totalItems = num;
             const totalPages = Math.ceil(totalItems / page_items);
 
-            Projeto.find()
+            Projeto.find({...query})
                 .skip((current_page - 1) * page_items)
                 .limit(page_items)
                 .then(projetos => {

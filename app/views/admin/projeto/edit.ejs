@@ -63,6 +63,31 @@
                           </select>
                         </div>
                       </div>
+                      <div class="col-12">
+                        <div class="form-group">
+                          <label for="inputCategoria">Categoria</label>
+                          <select type="text" name="categoria" class="form-control select-picker"
+                            title="Selecionar categoria" id="inputCategoria">
+                            <option <%= projeto.categoria === 'Website' ? 'selected': '' %>
+                              value="Website">
+                              Website</option>
+                            <option <%= projeto.categoria === 'Sistema' ? 'selected': '' %>
+                              value="Sistema">
+                              Sistema</option>
+                            <option <%= projeto.categoria === 'Aplicativo' ? 'selected': '' %>
+                              value="Aplicativo">Aplicativo</option>
+                            <option <%= projeto.categoria === 'Jogo' ? 'selected': '' %> value="Jogo">
+                              Jogo
+                            </option>
+                            <option <%= projeto.categoria === 'Plugin' ? 'selected': '' %>
+                              value="Plugin">
+                              Plugin</option>
+                            <option <%= projeto.categoria === 'Outros' ? 'selected': '' %>
+                              value="Outros">
+                              Outros</option>
+                          </select>
+                        </div>
+                      </div>
                       <div class="col-md-12">
                         <div class="form-group">
                           <label for="inputDescricao">Descrição</label>
@@ -125,7 +150,8 @@
                           <div class="col-4">
                             <div class="form-check form-check-flat form-check-primary">
                               <label class="form-check-label">
-                                <input type="checkbox" class="form-check-input" name="destaque" <%= projeto.destaque ? 'checked' : '' %>>
+                                <input type="checkbox" class="form-check-input" name="destaque"
+                                  <%= projeto.destaque ? 'checked' : '' %>>
                                 Destaque
                                 <i class="input-helper"></i></label></div>
                           </div>

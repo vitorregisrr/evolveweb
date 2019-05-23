@@ -18,10 +18,11 @@
                 <div class="col-12 d-flex justify-content-center align-items-center">
                     <nav class="button-group--grad" id="filterBtns">
                         <button class="button-group--grad__button active" data-filter="">Todos</button>
-                        <button class="button-group--grad__button" data-filter="website">Websites</button>
-                        <button class="button-group--grad__button" data-filter="aplicativo">Aplicativos</button>
-                        <button class="button-group--grad__button" data-filter="sistema">Sistemas</button>
-                        <button class="button-group--grad__button" data-filter="jogo">Jogos</button>
+                        <button class="button-group--grad__button" data-filter="Website">Websites</button>
+                        <button class="button-group--grad__button" data-filter="Aplicativo">Aplicativos</button>
+                        <button class="button-group--grad__button" data-filter="Sistema">Sistemas</button>
+                        <button class="button-group--grad__button" data-filter="Jogo">Jogos</button>
+                        <button class="button-group--grad__button" data-filter="Outros">Outros</button>
                     </nav>
                 </div>
             </div>
@@ -45,20 +46,21 @@
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             let current_page = 1;
-            let categoria = false;
+            let categoria = '';
             const page_items = 5;
             const loading = $('#loading');
 
             const loadMore = () => {
                 loading.show();
-
+                $('#projs-row').html('');
                 fetch(`/api/getprojetos?current_page=${current_page}&page_items=${page_items}&categoria=${categoria}`, {
                         method: 'GET'
                     })
                     .then(response => response.json())
                     .then(data => {
                         data = JSON.parse(data);
-                        data.projetos.forEach(proj => {
+                        if(data.projetos.length > 0){
+                            data.projetos.forEach(proj => {
                             $('#projs-row').append(
                                 `<div class="col-12 mb-4">
                                     <div class="work-card  wow fadeInUp">
@@ -78,6 +80,13 @@
                                 </div>`
                             );
                         });
+
+                        }else{
+                            $('#projs-row').append(`
+                                <div class="col-12 mb-4">
+                                    <h4 class="inner-title color-main wow fadeIn" style="font-size: 20px;"> Não encotramos projetos para essa categoria :( </h4>
+                                </div>`);
+                        }
 
                         if (!data.has_next) {
                             $('#btnLoadMore').remove();
